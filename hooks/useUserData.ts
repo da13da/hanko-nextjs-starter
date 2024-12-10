@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 import { Hanko } from "@teamhanko/hanko-elements";
 
@@ -19,11 +21,7 @@ export function useUserData(): HankoUser {
     error: null,
   });
 
-  useEffect(() => {
-    import("@teamhanko/hanko-elements").then(({ Hanko }) =>
-      setHanko(new Hanko(hankoApi))
-    );
-  }, []);
+  useEffect(() => setHanko(new Hanko(hankoApi)), []);
 
   useEffect(() => {
     hanko?.user
